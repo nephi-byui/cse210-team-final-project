@@ -26,3 +26,5 @@ class Actor():
             self.center.y = 0
         elif self.center.y < 0:
             self.center.y = screen_height
+
+            

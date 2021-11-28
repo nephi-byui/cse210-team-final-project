@@ -97,6 +97,17 @@ class Director(arcade.Window):
         self.wall_list.draw()
         self.ladder_list.draw()
 
+    # def shoot(self, direction):
+    #     """ Put the code that handles the shooting here
+    #     ARGS:
+    #         self (Director): an instance of Director
+    #     RETURNS:
+    #         none
+    #     """
+    #     bullet = Bullet(direction)
+    #     bullet.position = self.the_player._get_position()
+    #     self.projectile_list.append(bullet)
+
     def shoot(self, direction):
         """ Put the code that handles the shooting here
         ARGS:
@@ -107,7 +118,7 @@ class Director(arcade.Window):
         bullet = Bullet(direction)
         bullet.position = self.the_player._get_position()
         self.projectile_list.append(bullet)
-
+        
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed.
         ARGS:
@@ -160,3 +171,6 @@ class Director(arcade.Window):
             none
         """
         self.platform_physics_engine.update()
+
+
+   

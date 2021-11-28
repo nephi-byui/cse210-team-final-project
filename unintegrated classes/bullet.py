@@ -10,6 +10,7 @@ class Bullet(Actor):
         self.radius = 1
         self.velocity.dx= constants.BULLET_SPEED
         self.angle = 0
+    
         
     def draw(self):
         bull_img = "imagefilename"
@@ -32,3 +33,27 @@ class Bullet(Actor):
         self.velocity.dx += math.cos(math.radians(playerangle)) * constants.BULLET_SPEED
         self.velocity.dy += math.sin(math.radians(playerangle)) * constants.BULLET_SPEED
         
+# COllisions fucntion update
+    def check_collisions(self):
+        """
+        Responsible for checking if bullets have hit targets.Updates scores and removes dead items.
+        :return:
+        """
+
+        # NOTE: This assumes you named your targets list "targets"
+
+        for bullet in self.bullets:
+            for enemy in self.bullets:
+
+                # Make sure they are both alive before checking for a collision
+                if bullet.alive and bullet.alive:
+                    too_close = bullet.radius + enemy.radius
+
+                    if (abs(bullet.center.x - enemy.center.x) < too_close and
+                                abs(bullet.center.y - enemy.center.y) < too_close):
+                        # Hit
+                        bullet.alive = False
+                        self.score += enemy.hit()
+
+        # Check dead items and remove
+        self.cleanup_zombies()
