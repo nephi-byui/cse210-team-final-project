@@ -167,7 +167,7 @@ class Director(arcade.Window):
             [ Point(175,                        platform_1_height+105)],
             [ Point(constants.SCREEN_WIDTH-175, platform_2_height+105)],
             [ Point(175,                        platform_3_height+105)],
-            [ Point(constants.SCREEN_WIDTH-175, platform_4_height+105)],
+            #[ Point(constants.SCREEN_WIDTH-175, platform_4_height+105)],
         ]
 
         for l in ladders_to_draw:
@@ -476,7 +476,8 @@ class Director(arcade.Window):
     def destroy_bullet(self, bullet):
         """ Destroys a bullet
         """
-        self.projectile_list.remove(bullet)
+        if bullet in self.projectile_list:
+            self.projectile_list.remove(bullet)
 
     def on_update(self, delta_time):
         """ Does physics and other updates
