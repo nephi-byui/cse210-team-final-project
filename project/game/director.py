@@ -291,7 +291,7 @@ class Director(arcade.Window):
             none
         """
         msg_text = "STOP TOUCHING ME!"
-        start_x =  constants.SCREEN_WIDTH//2 - 250
+        start_x =  constants.SCREEN_WIDTH//2 - 315
         start_y = constants.SCREEN_HEIGHT//2
         arcade.draw_text(msg_text, start_x=start_x, start_y=start_y, font_size=40, color=arcade.color.YELLOW_ORANGE,font_name="Kenney Blocks")
 
@@ -313,8 +313,8 @@ class Director(arcade.Window):
         arcade.draw_text(msg_text, start_x=start_x, start_y=start_y, font_size=30, color=arcade.color.GREEN)
         msg_text = "Press Enter to Play again" 
         start_x = constants.SCREEN_WIDTH//2 - 275
-        start_y = constants.SCREEN_HEIGHT//2 -200
-        arcade.draw_text(msg_text, start_x=start_x, start_y=start_y, font_size=30, color=arcade.color.GREEN)
+        start_y = constants.SCREEN_HEIGHT//2 -210
+        arcade.draw_text(msg_text, start_x=start_x, start_y=start_y, font_size=30, color=arcade.color.DARK_GREEN)
         
     def shoot(self):
         """ Shoots a single bullet
