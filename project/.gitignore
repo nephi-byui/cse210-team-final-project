@@ -1,0 +1,6 @@
+/__pycache__/
+/game/__pycache__/
+/game/actors/__pycache__/
+/game/game_objects/__pycache__/
+/game/actors/__pycache__/
+*.pyc

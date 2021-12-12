@@ -109,11 +109,11 @@ class Director(arcade.Window):
 
         platforms_to_draw = [
         #   [ Position (Point),                                             width (INT),                 height (INT), color ]
-            [ Point((constants.SCREEN_WIDTH/2),     platform_0_height+15),               constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2-200), platform_1_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2+200), platform_2_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2-200), platform_3_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2+200), platform_4_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/32),     platform_0_height+15),               constants.SCREEN_WIDTH,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-800), platform_1_height+15),         constants.SCREEN_WIDTH - 200,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-455), platform_2_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-800), platform_3_height+15),         constants.SCREEN_WIDTH - 200,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-455), platform_4_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
             [ Point((constants.SCREEN_WIDTH/2-200), platform_5_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
         ]
 
@@ -122,16 +122,22 @@ class Director(arcade.Window):
             width = p[WIDTH]
             height = p[HEIGHT]
             fill_color = p[COLOR]
+
+            
             x = p[POSITION].get_x()
             y = p[POSITION].get_y()
 
-            platform = Platform(width, height, color=fill_color)
-            platform.center_x = x
-            platform.center_y = y
-            self.platform_list.append(platform)
+            for x in range(int(x),width, 35):
+                platform_img = "project/game/assets/images/tile2.png"
+                # platform = Platform(width, height, color=fill_color)
+                platform = Platform(platform_img, 0.5)
+                platform.center_x = x
+                platform.center_y = y
+                self.platform_list.append(platform)
 
         # walls
         walls_to_draw = [
+
         #   [ Position (Point),                              width (INT),    height (INT),   color ]
             [ Point(10,200),                                    20,            1200,        "black"    ],
             [ Point(constants.SCREEN_WIDTH-10, 200),            20,            1200,        "black"    ]
@@ -139,36 +145,42 @@ class Director(arcade.Window):
 
         for w in walls_to_draw:
 
-            width = w[WIDTH]
-            height = w[HEIGHT]
-            fill_color = w[COLOR]
+            # width = w[WIDTH]
+            # height = w[HEIGHT]
+            # fill_color = w[COLOR]
             x = w[POSITION].get_x()
             y = w[POSITION].get_y()
 
-            wall = Wall(width, height, color=fill_color)
-            wall.center_x = x
-            wall.center_y = y
-            self.wall_list.append(wall)
+            for y in range(0, 720, 64):
+
+                wall_img = "project/game/assets/images/wall_space2.png"
+                wall = arcade.Sprite(wall_img, 1)
+                # wall = Wall(width, height, color=fill_color)
+                wall.center_x = x
+                wall.center_y = y
+                self.wall_list.append(wall)
 
         # ladders
         ladders_to_draw = [
-        #   [ Position (Point),                                             width (INT),    height (INT),   color ]
-            [ Point(constants.SCREEN_WIDTH-190, platform_0_height+105),            20,            150,        "green"    ],
-            [ Point(190,                        platform_1_height+105),            20,            150,        "green"    ],
-            [ Point(constants.SCREEN_WIDTH-190, platform_2_height+105),            20,            150,        "green"    ],
-            [ Point(190,                        platform_3_height+105),            20,            150,        "green"    ],
-            [ Point(constants.SCREEN_WIDTH-190, platform_4_height+105),            20,            150,        "green"    ],
+        #   [ Position (Point)]
+            [ Point(constants.SCREEN_WIDTH-175, platform_0_height+105)],
+            [ Point(175,                        platform_1_height+105)],
+            [ Point(constants.SCREEN_WIDTH-175, platform_2_height+105)],
+            [ Point(175,                        platform_3_height+105)],
+            [ Point(constants.SCREEN_WIDTH-175, platform_4_height+105)],
         ]
 
         for l in ladders_to_draw:
 
-            width = l[WIDTH]
-            height = l[HEIGHT]
-            fill_color = l[COLOR]
+            # width = l[WIDTH]
+            # height = l[HEIGHT]
+            # fill_color = l[COLOR]
             x = l[POSITION].get_x()
             y = l[POSITION].get_y()
 
-            wall = Ladder(width, height, color=fill_color)
+            wall_img = "project/game/assets/images/ladder.png"
+            wall = arcade.Sprite(wall_img, 1, image_width=70, image_height= 150)
+            # wall = Ladder(width, height, color=fill_color)
             wall.center_x = x
             wall.center_y = y
             self.ladder_list.append(wall)
@@ -208,10 +220,9 @@ class Director(arcade.Window):
             enemy.spawn_x = x
             self.enemy_list.append(enemy)
 
-        # player
         player_img = "project/game/assets/images/robot1.png"
         #self.the_player = Player(10, color="white")
-        self.the_player = Player(player_img, 0.5)
+        self.the_player = Player(player_img, 0.5,)
         self.the_player.center_x = 200
         self.the_player.center_y = 100
         self.player_list.append(self.the_player)
