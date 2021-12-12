@@ -109,11 +109,11 @@ class Director(arcade.Window):
 
         platforms_to_draw = [
         #   [ Position (Point),                                             width (INT),                 height (INT), color ]
-            [ Point((constants.SCREEN_WIDTH/2),     platform_0_height+15),               constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2-200), platform_1_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2+200), platform_2_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2-200), platform_3_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
-            [ Point((constants.SCREEN_WIDTH/2+200), platform_4_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/32),     platform_0_height+15),               constants.SCREEN_WIDTH,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-800), platform_1_height+15),         constants.SCREEN_WIDTH - 200,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-455), platform_2_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-800), platform_3_height+15),         constants.SCREEN_WIDTH - 200,    30,  "black" ],
+            [ Point((constants.SCREEN_WIDTH/2-455), platform_4_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
             [ Point((constants.SCREEN_WIDTH/2-200), platform_5_height+15),         constants.SCREEN_WIDTH,    30,  "black" ],
         ]
 
@@ -127,13 +127,13 @@ class Director(arcade.Window):
             x = p[POSITION].get_x()
             y = p[POSITION].get_y()
 
-            # for x in range(int(x-650),width, 35):
-            # platform_img = "project/game/assets/images/tile2.png"
-            platform = Platform(width, height, color=fill_color)
-            # platform = Platform(platform_img, 0.5)
-            platform.center_x = x
-            platform.center_y = y
-            self.platform_list.append(platform)
+            for x in range(int(x),width, 35):
+                platform_img = "project/game/assets/images/tile2.png"
+                # platform = Platform(width, height, color=fill_color)
+                platform = Platform(platform_img, 0.5)
+                platform.center_x = x
+                platform.center_y = y
+                self.platform_list.append(platform)
 
         # walls
         walls_to_draw = [
