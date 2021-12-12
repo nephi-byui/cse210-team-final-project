@@ -2,7 +2,9 @@ import arcade
 from game.point import Point
 from game.velocity import Velocity
 
-class Actor(): 
+class Actor():
+    """ Handles the active sprites of the game
+    """
     def __init__(self):
         self.center = Point()
         self.velocity = Velocity()

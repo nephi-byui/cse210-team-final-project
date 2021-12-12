@@ -45,6 +45,7 @@ class Director(arcade.Window):
         self.background = []
 
         self.current_level = 1
+        self.game_is_won = False
 
     def setup(self):
         """ Initalize the game
@@ -279,7 +280,8 @@ class Director(arcade.Window):
             self.play_robot_complaining()
         
         #if the player gets the trophy, draw game won screen
-        if self.check_player_won(): 
+        if self.check_player_won():
+            self.game_is_won = True
             self.draw_game_won()
             self.play_winning_sound()
             
@@ -383,7 +385,12 @@ class Director(arcade.Window):
         # Restart
         else:
             if key == arcade.key.ENTER:
-                self.restart()
+                if self.game_is_won:
+                    self.restart()
+                elif constants.DEBUG_MODE:
+                    self.restart()
+                else:
+                    pass
 
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key.
