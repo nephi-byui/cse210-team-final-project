@@ -25,5 +25,3 @@
 * When you touch a robot, it will complain loudly, but will not kill you.
 * Climb all the way to the top of the robot warehouse to retrieve the trophy and 
     win the game!
- 
-
